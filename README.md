@@ -2,7 +2,12 @@
 请编写一个程序，制作一个简易的中文语言编译器，即使用中文语法进行编程，输入为逐行输入，每行为一个语句，一个语句代变一个操作，满足以下语法要求（括号内代变格式类型，具体参考样例）：
 
 变量定义：整数 （变量名） 等于 （数字）
-
+Integer variable_name = 9;
+1) (scanner.in, utf-8)
+2) string.split(\\sc)
+3) if (string == "整数" & "等于" ) { declar variable assign with variable_number}
+4) if (string == "看看") {print varaible_number}
+5) if (string == "如果") if{string == "大于"} {print varaible_number} else {print }
 运算（加法）：（变量名） 增加 （数字）
 
 运算（减法）：（变量名） 减少 （数字）
