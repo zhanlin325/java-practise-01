@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,9 +12,10 @@ public class Demo {
     private final static String PRINT = "看看";
     private final static String IF = "如果";
     private final static String NOT = "则";
-
     private final static String ELSE = "否则";
 
+//    private static final Map<Character, Integer> CHINESE_NUMBERS = new HashMap<>();
+    private static Map<String,Integer> map = new HashMap<>();
 
     public static void main(String[] args) {
         //Scanner sc = new Scanner(System.in);
@@ -23,10 +25,13 @@ public class Demo {
         String input4 = "气温 增加 二";
         String input5 = "如果 气温 大于 十 则 看看 “你好，世界” 否则 看看 “冻死我了”";
         String[] input1Arr = input1.trim().split("\\s+");
-        Integer varValue1 = 0;
+
 
         if (input1Arr[0].equals(WHOLE_NUMBER) && input1Arr[2].equals(EQUAL_SIGN)) {
+            Integer varValue1 = 0;
+            String varName1 = input1Arr[1];
             varValue1 = convertToNumeric(input1Arr[3]);
+            map.put(varName1,varValue1);
         }
 
         String[] input2Arr = input2.trim().split("\\s+");
@@ -34,7 +39,10 @@ public class Demo {
         String varValue2 = input2Arr[2];
 
         if (input2Arr[0].equals(varName2) && input2Arr[1].equals(DECREASE)) {
-            varValue1 -= convertToNumeric(varValue2);
+            String varName = input2Arr[0];
+            Integer keyValue = map.get(varName);
+            keyValue -= convertToNumeric(varValue2);
+            map.put(varName,keyValue);
         }
 
         String[] input3Arr = input3.trim().split("\\s+");
@@ -60,7 +68,6 @@ public class Demo {
                 System.out.println(input5Arr[9]);
             }
         }
-
     }
 
     public static int findIndex(String[] stringArray, String target) {
