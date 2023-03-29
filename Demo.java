@@ -5,16 +5,15 @@ public class Demo {
     private final static String[] CHINESE_NUMBERS1 = {"零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"};
     private final static String WHOLE_NUMBER = "整数";
     private final static String EQUAL_SIGN = "等于";
-
     private final static String DECREASE = "减少";
-
+    private final static String INCREASE = "增加";
     private final static String PRINT = "看看";
-
     public static void main(String[] args) {
         //Scanner sc = new Scanner(System.in);
         String input1 = "整数 气温 等于 十";
         String input2 = "气温 减少 三";
         String input3 = "看看 气温";
+        String input4 = "气温 增加 二";
         String[] input1Arr = input1.trim().split("\\s+");
         Integer varValue1 = 0;
 
@@ -35,6 +34,16 @@ public class Demo {
         if (input3Arr[0].equals(PRINT)) {
             System.out.println(convertToChineseNumber(varValue1));
         }
+
+        String[] input4Arr = input4.trim().split("\\s+");
+        String varValue4 = input4Arr[2];
+
+        if (input4Arr[0].equals(varName2) && input4Arr[1].equals(INCREASE)) {
+            varValue1 += convertToNumeric(varValue4);
+            // System.out.println(varValue1);
+        }
+
+
     }
 
     public static String convertToChineseNumber(int number) {
