@@ -1,51 +1,46 @@
-import java.sql.SQLOutput;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Scanner;
 
 public class Demo {
     private final static String[] CHINESE_NUMBERS1 = {"零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"};
+    private final static String WHOLE_NUMBER = "整数";
+    private final static String EQUAL_SIGN = "等于";
+
+    private final static String DECREASE = "减少";
+
+    private final static String PRINT = "看看";
+
     public static void main(String[] args) {
         //Scanner sc = new Scanner(System.in);
-        String input = "整数 气温 等于 十";
+        String input1 = "整数 气温 等于 十";
         String input2 = "气温 减少 三";
         String input3 = "看看 气温";
-        String[] split = input.trim().split("\\s+");
-        String variable = split[1];
-        String var_number = split[3];
-        if (split[0].equals("整数") && split[2].equals("等于")) {
-            variable = split[3];
-            // System.out.println(variable);
-        }
-        // System.out.println(convertToNumeric("四"));
-
-        String[] str2 = input2.trim().split("\\s+");
-        String str2Variable = str2[0];
-        String str2varNumber2 = str2[2];
-        Integer varNumber = 0;
-        // System.out.println(str2Variable);
-        // System.out.println(str2varNumber2);
-        if (str2[0].equals(str2Variable) && str2[1].equals("减少")) {
-            int temp = convertToNumeric(var_number);
-            temp -= convertToNumeric(str2[2]);
-            varNumber = temp;
-        //    System.out.println(temp);
-        }
-        String[] str3 = input3.trim().split("\\s+");
-        if (str3[0].equals("看看")) {
-            System.out.println(convertToChineseNumber(varNumber));
+        String[] input1Arr = input1.trim().split("\\s+");
+        String varName1 = input1Arr[1];
+        String varValue1 = input1Arr[3];
+        if (input1Arr[0].equals(WHOLE_NUMBER) && input1Arr[2].equals(EQUAL_SIGN)) {
+            varName1 = input1Arr[3];
         }
 
+        String[] input2Arr = input2.trim().split("\\s+");
+        String varName2 = input2Arr[0];
+        String varValue2 = input2Arr[2];
+        Integer varResult2 = 0;
+        if (input2Arr[0].equals(varName2) && input2Arr[1].equals(DECREASE)) {
+            int temp = convertToNumeric(varValue1);
+            temp -= convertToNumeric(varValue2);
+            varResult2 = temp;
+        }
+
+        String[] input3Arr = input3.trim().split("\\s+");
+        if (input3Arr[0].equals(PRINT)) {
+            System.out.println(convertToChineseNumber(varResult2));
+        }
     }
 
     public static String convertToChineseNumber(int number) {
         return CHINESE_NUMBERS1[number];
     }
-
-
-
-
 
     private static final Map<Character, Integer> CHINESE_NUMBERS = new HashMap<>();
     static {
