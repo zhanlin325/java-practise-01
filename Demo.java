@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,12 +9,19 @@ public class Demo {
     private final static String DECREASE = "减少";
     private final static String INCREASE = "增加";
     private final static String PRINT = "看看";
+    private final static String IF = "如果";
+    private final static String NOT = "则";
+
+    private final static String ELSE = "否则";
+
+
     public static void main(String[] args) {
         //Scanner sc = new Scanner(System.in);
         String input1 = "整数 气温 等于 十";
         String input2 = "气温 减少 三";
         String input3 = "看看 气温";
         String input4 = "气温 增加 二";
+        String input5 = "如果 气温 大于 十 则 看看 “你好，世界” 否则 看看 “冻死我了”";
         String[] input1Arr = input1.trim().split("\\s+");
         Integer varValue1 = 0;
 
@@ -42,10 +50,22 @@ public class Demo {
             varValue1 += convertToNumeric(varValue4);
             // System.out.println(varValue1);
         }
+//        如果 气温 大于 八 则 看看 “你好，世界” 否则 看看 “冻死我了”
+        String[] input5Arr = input5.trim().split("\\s+");
 
+        if (input5Arr[0].equals(IF) && input5Arr[4].equals(NOT) && input5Arr[7].equals(ELSE)){
+            if (varValue1 > convertToNumeric(input5Arr[3])) {
+                System.out.println(input5Arr[6]);
+            }else {
+                System.out.println(input5Arr[9]);
+            }
+        }
 
     }
 
+    public static int findIndex(String[] stringArray, String target) {
+        return Arrays.asList(stringArray).indexOf(target);
+    }
     public static String convertToChineseNumber(int number) {
         return CHINESE_NUMBERS1[number];
     }
