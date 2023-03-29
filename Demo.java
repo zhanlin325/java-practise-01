@@ -16,25 +16,24 @@ public class Demo {
         String input2 = "气温 减少 三";
         String input3 = "看看 气温";
         String[] input1Arr = input1.trim().split("\\s+");
-        String varName1 = input1Arr[1];
-        String varValue1 = input1Arr[3];
+        Integer varValue1 = 0;
+
         if (input1Arr[0].equals(WHOLE_NUMBER) && input1Arr[2].equals(EQUAL_SIGN)) {
-            varName1 = input1Arr[3];
+            varValue1 = convertToNumeric(input1Arr[3]);
         }
 
         String[] input2Arr = input2.trim().split("\\s+");
         String varName2 = input2Arr[0];
         String varValue2 = input2Arr[2];
-        Integer varResult2 = 0;
+
         if (input2Arr[0].equals(varName2) && input2Arr[1].equals(DECREASE)) {
-            int temp = convertToNumeric(varValue1);
-            temp -= convertToNumeric(varValue2);
-            varResult2 = temp;
+            varValue1 -= convertToNumeric(varValue2);
         }
 
         String[] input3Arr = input3.trim().split("\\s+");
+
         if (input3Arr[0].equals(PRINT)) {
-            System.out.println(convertToChineseNumber(varResult2));
+            System.out.println(convertToChineseNumber(varValue1));
         }
     }
 
