@@ -3,6 +3,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class Demo {
     private final static String[] CHINESE_NUMBERS1 = {"零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"};
     private final static String WHOLE_NUMBER = "整数";
@@ -25,6 +26,12 @@ public class Demo {
         String input4 = "气温 增加 二";
         String input5 = "如果 气温 大于 十 则 看看 “你好，世界” 否则 看看 “冻死我了”";
         String[] input1Arr = input1.trim().split("\\s+");
+        determineKeyword(input1);
+        determineKeyword(input3);
+        determineKeyword(input5);
+        determineKeyword(input2);
+
+        // call a function to process every input
 
 
         if (input1Arr[0].equals(WHOLE_NUMBER) && input1Arr[2].equals(EQUAL_SIGN)) {
@@ -39,7 +46,7 @@ public class Demo {
         String varValue2 = input2Arr[2];
 
         if (input2Arr[0].equals(varName2) && input2Arr[1].equals(DECREASE)) {
-            String varName = input2Arr[0];
+            String varName = varName2;
             Integer keyValue = map.get(varName);
             keyValue -= convertToNumeric(varValue2);
             map.put(varName,keyValue);
@@ -48,27 +55,59 @@ public class Demo {
         String[] input3Arr = input3.trim().split("\\s+");
 
         if (input3Arr[0].equals(PRINT)) {
-            System.out.println(convertToChineseNumber(varValue1));
+            String varName = input3Arr[1];
+            System.out.println(map.get(varName));
         }
 
         String[] input4Arr = input4.trim().split("\\s+");
         String varValue4 = input4Arr[2];
 
         if (input4Arr[0].equals(varName2) && input4Arr[1].equals(INCREASE)) {
-            varValue1 += convertToNumeric(varValue4);
-            // System.out.println(varValue1);
+            Integer keyValue = map.get(varName2);
+            keyValue += convertToNumeric(varValue4);
+            System.out.println(keyValue);
         }
 //        如果 气温 大于 八 则 看看 “你好，世界” 否则 看看 “冻死我了”
         String[] input5Arr = input5.trim().split("\\s+");
 
         if (input5Arr[0].equals(IF) && input5Arr[4].equals(NOT) && input5Arr[7].equals(ELSE)){
-            if (varValue1 > convertToNumeric(input5Arr[3])) {
+            if (map.get(varName2) > convertToNumeric(input5Arr[3])) {
                 System.out.println(input5Arr[6]);
             }else {
                 System.out.println(input5Arr[9]);
             }
         }
     }
+
+    //split the string for input
+    public static void determineKeyword(String str) {
+        String[] splitArr = str.trim().split("\\s+");
+        String keyword = splitArr[0];
+
+        switch (keyword) {
+            case WHOLE_NUMBER:
+                System.out.println("整数");
+                break;
+            case PRINT:
+                System.out.println("打印");
+                break;
+            case IF:
+                System.out.println("如果");
+                break;
+            default:
+                throw new IllegalArgumentException("没有符合的关键词");
+        }
+    }
+
+    public static void matchVariable(String str) {
+        if(map.containsKey(str)) {
+            System.out.println("在里面");
+            }
+        else {
+            System.out.println("没有这个对象");
+        }
+        }
+
 
     public static int findIndex(String[] stringArray, String target) {
         return Arrays.asList(stringArray).indexOf(target);
