@@ -78,12 +78,12 @@ public class Demo {
         String[] input4Arr = input4.trim().split("\\s+");
         String varValue4 = input4Arr[2];
 
-
         if (input4Arr[0].equals(varName2) && input4Arr[1].equals(INCREASE)) {
-            Integer keyValue = getNum(varName2);
-            keyValue += convertToNumeric(varValue4);
-            System.out.println(keyValue);
+            Integer varNumb = convertToNumeric(varValue4);
+            operator(varName2,varNumb);
+            System.out.println(getNum(varName2));
         }
+
 //        如果 气温 大于 八 则 看看 “你好，世界” 否则 看看 “冻死我了”
         String[] input5Arr = input5.trim().split("\\s+");
 
