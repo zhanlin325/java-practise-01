@@ -18,6 +18,10 @@ public class Demo {
 //    private static final Map<Character, Integer> CHINESE_NUMBERS = new HashMap<>();
     private static Map<String,Integer> map = new HashMap<>();
 
+    public static void assignNum(String name, String number) {
+        int toNumeric = convertToNumeric(number);
+        map.put(name,toNumeric);
+    }
     public static void main(String[] args) {
         //Scanner sc = new Scanner(System.in);
         String input1 = "整数 气温 等于 十";
@@ -26,19 +30,17 @@ public class Demo {
         String input4 = "气温 增加 二";
         String input5 = "如果 气温 大于 十 则 看看 “你好，世界” 否则 看看 “冻死我了”";
         String[] input1Arr = input1.trim().split("\\s+");
-        determineKeyword(input1);
-        determineKeyword(input3);
-        determineKeyword(input5);
-        determineKeyword(input2);
+//        determineKeyword(input1);
+//        determineKeyword(input3);
+//        determineKeyword(input5);
+//        determineKeyword(input2);
 
         // call a function to process every input
 
-
         if (input1Arr[0].equals(WHOLE_NUMBER) && input1Arr[2].equals(EQUAL_SIGN)) {
-            Integer varValue1 = 0;
             String varName1 = input1Arr[1];
-            varValue1 = convertToNumeric(input1Arr[3]);
-            map.put(varName1,varValue1);
+            String varValue1 = input1Arr[3];
+            assignNum(varName1,varValue1);
         }
 
         String[] input2Arr = input2.trim().split("\\s+");
@@ -80,24 +82,24 @@ public class Demo {
     }
 
     //split the string for input
-    public static void determineKeyword(String str) {
-        String[] splitArr = str.trim().split("\\s+");
-        String keyword = splitArr[0];
-
-        switch (keyword) {
-            case WHOLE_NUMBER:
-                System.out.println("整数");
-                break;
-            case PRINT:
-                System.out.println("打印");
-                break;
-            case IF:
-                System.out.println("如果");
-                break;
-            default:
-                throw new IllegalArgumentException("没有符合的关键词");
-        }
-    }
+//    public static void determineKeyword(String str) {
+//        String[] splitArr = str.trim().split("\\s+");
+//        String keyword = splitArr[0];
+//
+//        switch (keyword) {
+//            case WHOLE_NUMBER:
+//                System.out.println("整数");
+//                break;
+//            case PRINT:
+//                System.out.println("打印");
+//                break;
+//            case IF:
+//                System.out.println("如果");
+//                break;
+//            default:
+//                throw new IllegalArgumentException("没有符合的关键词");
+//        }
+//    }
 
     public static void matchVariable(String str) {
         if(map.containsKey(str)) {
