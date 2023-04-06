@@ -52,11 +52,11 @@ public class Demo {
 
         // call a function to process every input
 
-        if (input1Arr[0].equals(WHOLE_NUMBER) && input1Arr[2].equals(EQUAL_SIGN)) {
-            String varName1 = input1Arr[1];
-            String varValue1 = input1Arr[3];
-            assignNum(varName1,varValue1);
-        }
+//        if (input1Arr[0].equals(WHOLE_NUMBER) && input1Arr[2].equals(EQUAL_SIGN)) {
+//            String varName1 = input1Arr[1];
+//            String varValue1 = input1Arr[3];
+//            assignNum(varName1,varValue1);
+//        }
 
         String[] input2Arr = input2.trim().split("\\s+");
         String varName2 = input2Arr[0];
@@ -70,10 +70,10 @@ public class Demo {
 
         String[] input3Arr = input3.trim().split("\\s+");
 
-        if (input3Arr[0].equals(PRINT)) {
-            String varName = input3Arr[1];
-            System.out.println(getNum(varName));
-        }
+//        if (input3Arr[0].equals(PRINT)) {
+//            String varName = input3Arr[1];
+//            System.out.println(getNum(varName));
+//        }
 
         String[] input4Arr = input4.trim().split("\\s+");
         String varValue4 = input4Arr[2];
@@ -96,11 +96,31 @@ public class Demo {
         }
     }
 
-    //split the string for input
-//    public static void determineKeyword(String str) {
-//        String[] splitArr = str.trim().split("\\s+");
-//        String keyword = splitArr[0];
+   // split the string for input
+    public static void determineKeyword(String str) {
+        String[] splitArr = str.trim().split("\\s+");
 //
+        // 整数 气温 等于 十
+        if (splitArr[0].equals(WHOLE_NUMBER) && splitArr[2].equals(EQUAL_SIGN)) {
+            String name = splitArr[1];
+            String value = splitArr[3];
+            assignNum(name,value);
+        } else if(splitArr[1].equals(DECREASE)) {
+               //气温 减少 三
+                Integer numb = convertToNumeric(splitArr[2]);
+                numb = -numb;
+                operator(splitArr[0],numb);
+        } else if (splitArr[0].equals(PRINT)) {
+            //看看 气温
+            String name = splitArr[1];
+            System.out.println(getNum(name));
+        }
+        // todo adding rest of the if function in here and then optimize the code.
+
+        //气温 增加 二
+        //看看 气温
+        //如果 气温 大于 八 则 看看 “你好，世界” 否则 看看 “冻死我了”
+
 //        switch (keyword) {
 //            case WHOLE_NUMBER:
 //                System.out.println("整数");
@@ -114,7 +134,7 @@ public class Demo {
 //            default:
 //                throw new IllegalArgumentException("没有符合的关键词");
 //        }
-//    }
+    }
 
     public static void matchVariable(String str) {
         if(map.containsKey(str)) {
@@ -123,7 +143,7 @@ public class Demo {
         else {
             System.out.println("没有这个对象");
         }
-        }
+    }
 
 
     public static int findIndex(String[] stringArray, String target) {
