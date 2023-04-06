@@ -63,10 +63,9 @@ public class Demo {
         String varValue2 = input2Arr[2];
 
         if (input2Arr[0].equals(varName2) && input2Arr[1].equals(DECREASE)) {
-            String varName = varName2;
-            Integer keyValue = getNum(varName);
-            keyValue -= convertToNumeric(varValue2);
-            assignNum(varName,keyValue);
+            Integer varNumb = convertToNumeric(varValue2);
+            varNumb = -varNumb;
+            operator(varName2,varNumb);
         }
 
         String[] input3Arr = input3.trim().split("\\s+");
