@@ -20,12 +20,23 @@ public class Demo {
 
     public static void assignNum(String name, String number) {
         int toNumeric = convertToNumeric(number);
-        map.put(name,toNumeric);
+        assignNum(name,toNumeric);
+    }
+
+    public static void assignNum (String name, Integer number) {
+        map.put(name,number);
     }
 
     public static Integer getNum(String name) {
         return map.get(name);
     }
+
+    public static void operator (String name, Integer inputNum) {
+        Integer num = getNum(name);
+        num += inputNum;
+        assignNum(name,num);
+    }
+
     public static void main(String[] args) {
         //Scanner sc = new Scanner(System.in);
         String input1 = "整数 气温 等于 十";
@@ -55,7 +66,7 @@ public class Demo {
             String varName = varName2;
             Integer keyValue = getNum(varName);
             keyValue -= convertToNumeric(varValue2);
-            map.put(varName,keyValue);
+            assignNum(varName,keyValue);
         }
 
         String[] input3Arr = input3.trim().split("\\s+");
@@ -67,6 +78,7 @@ public class Demo {
 
         String[] input4Arr = input4.trim().split("\\s+");
         String varValue4 = input4Arr[2];
+
 
         if (input4Arr[0].equals(varName2) && input4Arr[1].equals(INCREASE)) {
             Integer keyValue = getNum(varName2);
