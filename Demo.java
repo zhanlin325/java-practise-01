@@ -22,6 +22,10 @@ public class Demo {
         int toNumeric = convertToNumeric(number);
         map.put(name,toNumeric);
     }
+
+    public static Integer getNum(String name) {
+        return map.get(name);
+    }
     public static void main(String[] args) {
         //Scanner sc = new Scanner(System.in);
         String input1 = "整数 气温 等于 十";
@@ -49,7 +53,7 @@ public class Demo {
 
         if (input2Arr[0].equals(varName2) && input2Arr[1].equals(DECREASE)) {
             String varName = varName2;
-            Integer keyValue = map.get(varName);
+            Integer keyValue = getNum(varName);
             keyValue -= convertToNumeric(varValue2);
             map.put(varName,keyValue);
         }
@@ -58,14 +62,14 @@ public class Demo {
 
         if (input3Arr[0].equals(PRINT)) {
             String varName = input3Arr[1];
-            System.out.println(map.get(varName));
+            System.out.println(getNum(varName));
         }
 
         String[] input4Arr = input4.trim().split("\\s+");
         String varValue4 = input4Arr[2];
 
         if (input4Arr[0].equals(varName2) && input4Arr[1].equals(INCREASE)) {
-            Integer keyValue = map.get(varName2);
+            Integer keyValue = getNum(varName2);
             keyValue += convertToNumeric(varValue4);
             System.out.println(keyValue);
         }
@@ -73,7 +77,7 @@ public class Demo {
         String[] input5Arr = input5.trim().split("\\s+");
 
         if (input5Arr[0].equals(IF) && input5Arr[4].equals(NOT) && input5Arr[7].equals(ELSE)){
-            if (map.get(varName2) > convertToNumeric(input5Arr[3])) {
+            if (getNum(varName2) > convertToNumeric(input5Arr[3])) {
                 System.out.println(input5Arr[6]);
             }else {
                 System.out.println(input5Arr[9]);
