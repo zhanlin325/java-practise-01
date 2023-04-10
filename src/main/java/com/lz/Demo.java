@@ -1,4 +1,5 @@
-import java.util.ArrayList;
+package com.lz;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -56,7 +57,7 @@ public class Demo {
     }
 
    // split the string for input
-    public static void determineKeyword(String str) {
+    public static String determineKeyword(String str) {
         String[] splitArr = str.trim().split("\\s+");
 //
         // 整数 气温 等于 十
@@ -72,7 +73,7 @@ public class Demo {
         } else if (splitArr[0].equals(PRINT)) {
             //看看 气温
             String name = splitArr[1];
-            System.out.println(getNum(name));
+            return convertToChineseNumber(getNum(name));
         }
 
         else if (splitArr[1].equals(INCREASE)) {
@@ -106,6 +107,7 @@ public class Demo {
 //            default:
 //                throw new IllegalArgumentException("没有符合的关键词");
 //        }
+        return null;
     }
 
     public static void matchVariable(String str) {
