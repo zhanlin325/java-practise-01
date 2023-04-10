@@ -31,10 +31,11 @@ public class Demo {
         return map.get(name);
     }
 
-    public static void operator (String name, Integer inputNum) {
+    public static void addSubVar (String name, Integer inputNum) {
         Integer num = getNum(name);
         num += inputNum;
         assignNum(name,num);
+
     }
 
     public static void main(String[] args) {
@@ -44,56 +45,14 @@ public class Demo {
         String input3 = "看看 气温";
         String input4 = "气温 增加 二";
         String input5 = "如果 气温 大于 十 则 看看 “你好，世界” 否则 看看 “冻死我了”";
-        String[] input1Arr = input1.trim().split("\\s+");
-//        determineKeyword(input1);
-//        determineKeyword(input3);
-//        determineKeyword(input5);
-//        determineKeyword(input2);
-
+        determineKeyword(input1);
+        determineKeyword(input2);
+        determineKeyword(input3);
+        determineKeyword(input4);
+        determineKeyword(input5);
         // call a function to process every input
 
-//        if (input1Arr[0].equals(WHOLE_NUMBER) && input1Arr[2].equals(EQUAL_SIGN)) {
-//            String varName1 = input1Arr[1];
-//            String varValue1 = input1Arr[3];
-//            assignNum(varName1,varValue1);
-//        }
 
-        String[] input2Arr = input2.trim().split("\\s+");
-        String varName2 = input2Arr[0];
-        String varValue2 = input2Arr[2];
-
-        if (input2Arr[0].equals(varName2) && input2Arr[1].equals(DECREASE)) {
-            Integer varNumb = convertToNumeric(varValue2);
-            varNumb = -varNumb;
-            operator(varName2,varNumb);
-        }
-
-        String[] input3Arr = input3.trim().split("\\s+");
-
-//        if (input3Arr[0].equals(PRINT)) {
-//            String varName = input3Arr[1];
-//            System.out.println(getNum(varName));
-//        }
-
-        String[] input4Arr = input4.trim().split("\\s+");
-        String varValue4 = input4Arr[2];
-
-        if (input4Arr[0].equals(varName2) && input4Arr[1].equals(INCREASE)) {
-            Integer varNumb = convertToNumeric(varValue4);
-            operator(varName2,varNumb);
-            System.out.println(getNum(varName2));
-        }
-
-//        如果 气温 大于 八 则 看看 “你好，世界” 否则 看看 “冻死我了”
-        String[] input5Arr = input5.trim().split("\\s+");
-
-        if (input5Arr[0].equals(IF) && input5Arr[4].equals(NOT) && input5Arr[7].equals(ELSE)){
-            if (getNum(varName2) > convertToNumeric(input5Arr[3])) {
-                System.out.println(input5Arr[6]);
-            }else {
-                System.out.println(input5Arr[9]);
-            }
-        }
     }
 
    // split the string for input
@@ -109,17 +68,30 @@ public class Demo {
                //气温 减少 三
                 Integer numb = convertToNumeric(splitArr[2]);
                 numb = -numb;
-                operator(splitArr[0],numb);
+                addSubVar(splitArr[0],numb);
         } else if (splitArr[0].equals(PRINT)) {
             //看看 气温
             String name = splitArr[1];
             System.out.println(getNum(name));
         }
-        // todo adding rest of the if function in here and then optimize the code.
 
-        //气温 增加 二
-        //看看 气温
-        //如果 气温 大于 八 则 看看 “你好，世界” 否则 看看 “冻死我了”
+        else if (splitArr[1].equals(INCREASE)) {
+            //气温 增加 二
+            Integer numb = convertToNumeric(splitArr[2]);
+            addSubVar(splitArr[0],numb);
+        }
+        else if(splitArr[5].equals(IF) && splitArr[4].equals(NOT) && splitArr[7].equals(ELSE)) {
+            //如果 气温 大于 八 则 看看 “你好，世界” 否则 看看 “冻死我了”
+
+                if (getNum(splitArr[2]) > convertToNumeric(splitArr[3])) {
+                    System.out.println(splitArr[6]);
+                }else {
+                    System.out.println(splitArr[9]);
+                }
+        }
+
+
+
 
 //        switch (keyword) {
 //            case WHOLE_NUMBER:
