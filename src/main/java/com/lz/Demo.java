@@ -3,6 +3,7 @@ package com.lz;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 
 public class Demo {
@@ -40,19 +41,26 @@ public class Demo {
     }
 
     public static void main(String[] args) {
-        //Scanner sc = new Scanner(System.in);
-        String input1 = "整数 气温 等于 十";
-        String input2 = "气温 减少 三";
-        String input3 = "看看 气温";
-        String input4 = "气温 增加 二";
-        String input5 = "如果 气温 大于 十 则 看看 “你好，世界” 否则 看看 “冻死我了”";
-        determineKeyword(input1);
-        determineKeyword(input2);
-        determineKeyword(input3);
-        determineKeyword(input4);
-        determineKeyword(input5);
-        // call a function to process every input
+        while (true) {
+            Scanner sc = new Scanner(System.in);
+            String str = sc.nextLine();
+            String result = determineKeyword(str);
+            if (result != null) {
+                System.out.println(result);
+            }
 
+//        String input1 = "整数 气温 等于 十";
+//        String input2 = "气温 减少 三";
+//        String input3 = "看看 气温";
+//        String input4 = "气温 增加 二";
+//        String input5 = "如果 气温 大于 十 则 看看 “你好，世界” 否则 看看 “冻死我了”";
+//        determineKeyword(sc);
+//        determineKeyword(sc);
+//        determineKeyword(input3);
+//        determineKeyword(input4);
+//        determineKeyword(input5);
+            // call a function to process every input
+        }
 
     }
 
