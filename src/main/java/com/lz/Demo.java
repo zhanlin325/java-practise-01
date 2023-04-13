@@ -81,13 +81,15 @@ public class Demo {
             Integer numb = convertToNumeric(splitArr[2]);
             addSubVar(splitArr[0],numb);
         }
-        else if(splitArr[5].equals(IF) && splitArr[4].equals(NOT) && splitArr[7].equals(ELSE)) {
+        else if(splitArr[0].equals(IF) && splitArr[4].equals(NOT) && splitArr[7].equals(ELSE)) {
             //如果 气温 大于 八 则 看看 “你好，世界” 否则 看看 “冻死我了”
 
-                if (getNum(splitArr[2]) > convertToNumeric(splitArr[3])) {
-                    System.out.println(splitArr[6]);
+                if (getNum(splitArr[1]) > convertToNumeric(splitArr[3])) {
+                    String newStr = (splitArr[6]);
+                    return newStr.replace("“","").replace("”","");
                 }else {
-                    System.out.println(splitArr[9]);
+                    String newStr = (splitArr[9]);
+                    return newStr.replace("“","").replace("”","");
                 }
         }
 
